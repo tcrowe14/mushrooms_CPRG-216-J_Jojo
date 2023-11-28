@@ -80,4 +80,3 @@ class Appointment:
         #result = f'{self.__client_name:<}' + f'{self.__client_phone:>26s}' + f'{self.__day_of_week:>11s}' + f'{str(self.__start_time_hour):>4s}' + f'{str(self.__start_time_hour + 1):>10s}' + str(self.__appt_type_desc)
         #+ f'{str(self.end_time_hour)}' + f'{str(self.__appt_type_desc)}'
         return result
- 
