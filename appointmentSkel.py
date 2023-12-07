@@ -37,6 +37,11 @@ def main():
     print("Weekly calendar created")
 
     load_flag = input("Would you like to load previously scheduled appointments from a file (Y/N)? ")
+    load_flag = load_flag.upper()
+    if load_flag == "Y":
+        load_scheduled_appointments(appt_calendar)
+    elif load_flag == "N":
+        pass
     # Write code to load appointments here, call load_schedule_appointments
 
     # Display the menu and input user selections (loop)
@@ -69,6 +74,11 @@ def main():
 
     print("\n** Exit the system **")
     save_flag = input("Would you like to save all scheduled appointments to a file (Y/N)? ")
+    save_flag = save_flag.upper()
+    if save_flag == "Y":
+        save_scheduled_appointments(appt_calendar)
+    elif save_flag == "N":
+        pass
     # save the appointments if the user requests it, call save_scheduled_appointments
     print("Good Bye!")
 
