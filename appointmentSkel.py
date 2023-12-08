@@ -53,13 +53,18 @@ def main():
         if selection == 1:
             print("\n** Schedule an appointment **")
             # call schedule_appointment
+            schedule_appointment(appt_calendar)
         #  2. Find appointment by name
         elif selection == 2:
             print("\n** Find appointment by name **")
+            client_name = input("Enter Client Name: ")
             # call show_appointments_by_name
+            show_appointments_by_name(appt_calendar, client_name)
         #  3. Show all appointments for a specific day
         elif selection == 3:
             print("\n** Print calendar for a specific day **")
+            day_of_week = input("Enter day of week: ")
+            show_appointments_by_day(appt_calendar, day_of_week)
             # call show_appointments_by_day
         #  4. Cancel an appointment
         elif selection == 4:
