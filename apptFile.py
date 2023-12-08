@@ -5,34 +5,43 @@ import os.path
 from os import path
 from os import system
 def load_scheduled_appointments(appt_cal: list[ap.Appointment]):
-    path = input("Enter appointment filename: ")
+    path = input('Enter appointment filename: ')
     check_file = os.path.isfile(path)
     while check_file == False:
-        path = input("File not found. Re-enter appointment filename: ")
-        check_file = os.path.isfile(path)
-
+         path = input("File not found. Re-enter appointment filename: ")
+         check_file = os.path.isfile(path)
     if check_file is True:
         counter = 0
         fileName = open(path, 'r')
-        line1 = fileName.readline()
-        while line1 != '':
-            items = line1.rstrip().split(',')
+
+        for line in fileName:
+            items = line.rstrip().split(',')
             client_name = (items[0])
             client_phone = (items[1])
-            appt_type =  (items[2])
-            day_of_week =  (items[3])
-            start_hour =  (items[4])
+            appt_type = (items[2])
+            day_of_week = (items[3])
+            start_time_hour = (items[4])
             counter += 1
-            line1 = fileName.readline()
-            find_appointment_by_time(appt_cal, day_of_week, start_hour)
-            schedule_appointment(appt_cal)
-    fileName.close()
-        
-    print(counter,"previously scheduled appointments have been loaded")
+
+            found = False
+            index = 0
+            while index < len(appt_cal) and not found:
+                current_appt = appt_cal[index]
+                if current_appt.get_day_of_week() == day_of_week and \
+                current_appt.get_start_time_hour() == int(start_time_hour) and \
+                current_appt.get_appt_type() == 0:
+                            found = True
+                index += 1
+            if found:
+                current_appt.set_client_name(client_name)
+                current_appt.set_client_phone(client_phone)
+                current_appt.set_appt_type(int(appt_type))
+            else:
+                print("Appointment entry not found")
+        print(counter,"previously scheduled appointments have been loaded")
 
 
 def save_scheduled_appointments(appt_cal: list[ap.Appointment]):
-    appt_cal.insert(2, "Gabriela,368-111-9999,4,Thursday,13")
     save_path = input("Enter appointment filename: ")
     while os.path.exists(save_path):
         save_opt = input("File already exists. Do you want to overwrite it (Y/N)? ")
