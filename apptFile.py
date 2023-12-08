@@ -48,16 +48,25 @@ def save_scheduled_appointments(appt_cal: list[ap.Appointment]):
         save_opt = save_opt.upper()
         if save_opt == "Y":
             save_path = open(save_path,"w+")
-            for x in range(len(appt_cal)):
-                print(x, file=save_path)
+            save_counter = 0
+            for appt in appt_cal:
+                if appt.get_appt_type() != 0:
+                    print(appt.format_record(), file=save_path)
+                    save_counter += 1
+            save_path.close()
+            print(save_counter,"scheduled appointments have been successfully saved")
+            exit()
         if save_opt == "N":
             save_path = input("Enter appointment filename: ")
             while os.path.exists(save_path):
                 save_opt = input("File already exists. Do you want to overwrite it (Y/N)? ")
     save_path = open(save_path,"w+")
     save_counter = 0
-    for x in range(len(appt_cal)):
-        print(x, file=save_path)
-        save_counter += 1
+    #for x in range(len(appt_cal)):
+        #print(x, file=save_path)
+    for appt in appt_cal:
+        if appt.get_appt_type() != 0:
+            print(appt.format_record(), file=save_path)
+            save_counter += 1
     save_path.close()
     print(save_counter,"scheduled appointments have been successfully saved")
