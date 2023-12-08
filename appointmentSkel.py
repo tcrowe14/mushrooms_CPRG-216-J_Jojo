@@ -69,6 +69,8 @@ def main():
         #  4. Cancel an appointment
         elif selection == 4:
             print("\n** Cancel an appointment **")
+            cancel_appointment_by_time(appt_calendar)
+            #ap.cancel(cancel_appt)
             # write code to cancel appointment here
         #  ?. Invalid selection
         elif selection != 9:
