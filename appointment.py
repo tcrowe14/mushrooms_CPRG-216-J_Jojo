@@ -71,12 +71,11 @@ class Appointment:
     
     def __str__(self):
         self.get_appt_type_desc()
-        self.__end_time_hour = self.__start_time_hour + 1
-        self.__end_time_hour = (f'{self.__end_time_hour:02d}'+":00")
-        self.__start_time_hour = (f'{self.__start_time_hour:02d}'+":00  -")
+        self.__end_time_hour = int(self.__start_time_hour) + 1
+        #self.__end_time_hour = (f'{self.__end_time_hour:02d}'+":00")
+        #self.__start_time_hour = (f'{self.__start_time_hour:02d}'+":00  -")
         result = "{:20s}{:15s}{:10s}{:10s}{:10s}{:20s}".format(str(self.__client_name),
-        str(self.__client_phone), self.__day_of_week, str(self.__start_time_hour),
-        str(self.__end_time_hour), str(self.__appt_type_desc))
-        #result = f'{self.__client_name:<}' + f'{self.__client_phone:>26s}' + f'{self.__day_of_week:>11s}' + f'{str(self.__start_time_hour):>4s}' + f'{str(self.__start_time_hour + 1):>10s}' + str(self.__appt_type_desc)
-        #+ f'{str(self.end_time_hour)}' + f'{str(self.__appt_type_desc)}'
+        str(self.__client_phone), self.__day_of_week, (f'{self.__start_time_hour:02d}'+":00  -"),
+        (f'{self.__end_time_hour:02d}'+":00"), str(self.__appt_type_desc))
+
         return result
