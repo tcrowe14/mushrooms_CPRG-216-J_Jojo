@@ -29,7 +29,24 @@ def find_appointment_by_time(appt_cal: list[ap.Appointment], day_of_week, start_
     # find_appointment_by_time - given a list of appointments and a specific day and time,
     # this function finds and returns the corresponding appointment. If no appointment
     # is found, returns None
-
     day_index = {"Monday":0, "Tuesday":8, "Wednesday":16, "Thursday":24, "Friday":32, "Saturday":40}
     index_pos = day_index[day_of_week]+(int(start_hour)-9)
     return appt_cal[index_pos]
+
+def cancel_appointment_by_time(appt_cal):
+        #inputs the day and start time
+    cancel_day = input('What day: ').capitalize()
+    cancel_hour = int(input('Enter start hour (24 hour clock): '))
+    if cancel_day not in apSk.DAYS_OF_WEEK or cancel_hour not in range(apSk.FIRST_HOUR_OF_DAY, apSk.LAST_HOUR_OF_DAY+1):
+        print('Sorry that time slot is not in the weekly calendar!')
+    else:
+        current_appt = find_appointment_by_time(appt_cal, cancel_day, cancel_hour)
+        if current_appt.get_appt_type() != 0:
+            client_name = current_appt.get_client_name()
+            client_phone = current_appt.get_client_phone()
+            appt_type = current_appt.get_appt_type()
+            current_appt = current_appt.cancel()
+            print(f"Appointment: {cancel_day} {cancel_hour}-{cancel_hour+1}for{client_name} has been cancelled!")
+
+        elif current_appt.get_appt_type() == 0:
+            print("That time slot isn't booked and doesn't need to be cancelled")
