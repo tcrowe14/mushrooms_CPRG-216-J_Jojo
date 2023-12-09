@@ -46,7 +46,7 @@ def cancel_appointment_by_time(appt_cal):
             client_phone = current_appt.get_client_phone()
             appt_type = current_appt.get_appt_type()
             current_appt = current_appt.cancel()
-            print(f"Appointment: {cancel_day} {cancel_hour}-{cancel_hour+1}for{client_name} has been cancelled!")
+            print(f"Appointment: {cancel_day} {cancel_hour}:00 - {cancel_hour+1}:00 for {client_name} has been cancelled!")
 
         elif current_appt.get_appt_type() == 0:
             print("That time slot isn't booked and doesn't need to be cancelled")
