@@ -6,8 +6,8 @@
 # All appointments are between 9 AM - 4 PM daily. All appointments are one hour long.
 # This appointment Manager is for a six day week (Monday-Saturday).
 #
-# Author:
-# Version/Date:
+# Author: Team Mushroom - Taylor Crowe & Dallas Huppie
+# Version/Date: 1.14 (Final) Dec 9 2023
 #
 import appointment as ap
 # import file functions
@@ -42,7 +42,6 @@ def main():
         load_scheduled_appointments(appt_calendar)
     elif load_flag == "N":
         pass
-    # Write code to load appointments here, call load_schedule_appointments
 
     # Display the menu and input user selections (loop)
     selection = print_menu()
@@ -52,26 +51,24 @@ def main():
         #  1. Schedule an appointment
         if selection == 1:
             print("\n** Schedule an appointment **")
-            # call schedule_appointment
             schedule_appointment(appt_calendar)
+
         #  2. Find appointment by name
         elif selection == 2:
             print("\n** Find appointment by name **")
             client_name = input("Enter Client Name: ")
-            # call show_appointments_by_name
             show_appointments_by_name(appt_calendar, client_name)
+
         #  3. Show all appointments for a specific day
         elif selection == 3:
             print("\n** Print calendar for a specific day **")
             day_of_week = input("Enter day of week: ")
             show_appointments_by_day(appt_calendar, day_of_week)
-            # call show_appointments_by_day
+        
         #  4. Cancel an appointment
         elif selection == 4:
             print("\n** Cancel an appointment **")
             cancel_appointment_by_time(appt_calendar)
-            #ap.cancel(cancel_appt)
-            # write code to cancel appointment here
         #  ?. Invalid selection
         elif selection != 9:
             print("\nInvalid option")
