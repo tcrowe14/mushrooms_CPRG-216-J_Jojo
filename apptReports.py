@@ -35,8 +35,6 @@ def show_appointments_by_day(appt_cal: list[ap.Appointment], day_of_week):
     print("\n{:20s}{:15s}{:10s}{:10s}{:10s}{:20s}".format("Client Name",
     "Phone", "Day", "Start", "End", "Type"))
     print("-"*85)
-    found = False
     for appointment in appt_cal: #For loop through calendar
         if appointment.get_day_of_week().lower() == day_of_week.lower(): #Prints the appointment using the str() method.
             print(appointment)
-            found = True
